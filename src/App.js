@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import Scorecard from './components/Scorecard'
+import Game from './components/Game'
 import Controls from './components/Controls'
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
         <p className="Intro">
           Enter your score in after each bowl
         </p>
-        <Scorecard />
+        <Game />
         <Controls />
       </div>
     );

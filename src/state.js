@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
 
-import scorecard from './components/Scorecard/state.js'
+import game from './components/Game/state.js'
 
 export default combineReducers({
-  scorecard,
+  game,
 })

@@ -1,15 +1,9 @@
 import React, {Component} from 'react'
-import {connect} from 'react-redux'
 
 import './Scorecard.css'
 
-const mapStateToProps = scorecard => ({
-  ...scorecard,
-})
-
-class Scorecard extends Component {
+export default class Scorecard extends Component {
   render () {
-    console.log(this.props.scorecard)
     return (
       <div className='Container'>
         <table id='table' className='Scorecard' cellPadding='1' cellSpacing='0'>
@@ -59,5 +53,3 @@ class Scorecard extends Component {
     )
   }
 }
-
-export default connect(mapStateToProps)(Scorecard)
