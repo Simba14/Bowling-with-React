@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Scorecard from './components/Scorecard'
+import Controls from './components/Controls'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           Enter your score in after each bowl
         </p>
         <Scorecard />
+        <Controls />
       </div>
     );
   }
