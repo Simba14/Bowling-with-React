@@ -4,6 +4,7 @@ import './Scorecard.css'
 
 export default class Scorecard extends Component {
   render () {
+    const {totalScore} = this.props
     return (
       <div className='Container'>
         <table id='table' className='Scorecard' cellPadding='1' cellSpacing='0'>
@@ -45,7 +46,7 @@ export default class Scorecard extends Component {
               <td id='cumulative-score-f8' colSpan='6'></td>
               <td id='cumulative-score-f9' colSpan='6'></td>
               <td id='cumulative-score-f10' colSpan='6'></td>
-              <td id='total-score' colSpan='6'></td>
+              <td id='total-score' colSpan='6'>{totalScore}</td>
             </tr>
           </tbody>
         </table>

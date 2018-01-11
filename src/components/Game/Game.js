@@ -4,8 +4,14 @@ import Scorecard from '../Scorecard'
 
 export default class Game extends Component {
   render () {
+    const {
+      game: {
+        totalScore,
+      },
+    } = this.props
+    console.log(totalScore)
     return (
-      <Scorecard />
+      <Scorecard totalScore={totalScore}/>
     )
   }
 }
