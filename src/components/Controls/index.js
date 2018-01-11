@@ -4,7 +4,8 @@ import {actions} from '../Game/state'
 import Controls from './Controls'
 
 const mapDispatchToProps = {
-  updateScore: actions.updateScore
+  enterScore: actions.enterScore,
+  updateTotalScore: actions.updateTotalScore,
 }
 
 export default connect(null, mapDispatchToProps)(Controls)

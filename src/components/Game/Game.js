@@ -7,11 +7,13 @@ export default class Game extends Component {
     const {
       game: {
         totalScore,
+        scores,
       },
     } = this.props
-    console.log(totalScore)
+
+    console.log(scores)
     return (
-      <Scorecard totalScore={totalScore}/>
+      <Scorecard scores={scores} totalScore={totalScore}/>
     )
   }
 }
