@@ -24,11 +24,17 @@ const isStrike = pins => {
   return pins === strike
 }
 
+const isBonusRoll = rolls => {
+  const bonusRoll = 20
+  return rolls === bonusRoll
+}
+
+
 const getFrameIndex = scores =>
   scores.length - 1
 
 const updateCurrentRoll = (rolls, lastScore) => {
-  if (isStrike(lastScore) && isEven(rolls)) {
+  if (isStrike(lastScore) && isEven(rolls) && rolls < 18) {
     return rolls + 2
   } else {
     return rolls + 1
@@ -36,8 +42,7 @@ const updateCurrentRoll = (rolls, lastScore) => {
 }
 
 const updateScores = (rolls, lastScore, scores) => {
-  const penultimateRoll = 20
-  if (isEven(rolls) && rolls !== penultimateRoll) {
+  if (isEven(rolls) && !isBonusRoll(rolls)) {
     return scores.concat([[lastScore]])
   } else {
     const newFrameScore = scores[getFrameIndex(scores)].concat([lastScore])
@@ -46,11 +51,14 @@ const updateScores = (rolls, lastScore, scores) => {
 }
 
 const calculateFrameScore = (state, lastScore) => {
-  if (!isEven(state.rolls)) {
-    const frameScore = state.scores[getFrameIndex(state.scores)].slice(-1)[0] + lastScore
+  if ((!isEven(state.rolls) && !isStrike(lastScore)) || isBonusRoll(state.rolls)) {
+    const frameScore = isBonusRoll(state.rolls) ?
+      state.scores[getFrameIndex(state.scores)].slice(-1)[0] + state.scores[getFrameIndex(state.scores)].slice(-2)[0] + lastScore
+      : state.scores[getFrameIndex(state.scores)].slice(-1)[0] + lastScore
+
     const updatedFrameScores = state.frameScores.concat(frameScore)
     return updatedFrameScores
-  } else if (isStrike(lastScore)) {
+  } else if (isStrike(lastScore) && state.rolls < 18) {
     return state.frameScores.concat(lastScore)
   }
   return state.frameScores
