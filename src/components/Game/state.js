@@ -13,15 +13,26 @@ const initialState = {
   currentRoll: 1,
   totalScore: 0,
   scores: [],
+  frameScores: [],
+}
+
+const calculateFrameScore = (state, lastRoll) => {
+  if (state.currentRoll % 2 === 0) {
+    const frameScore = state.scores.slice(-1)[0] + lastRoll
+    const updatedFrameScores = state.frameScores.concat(frameScore)
+    return updatedFrameScores
+  }
+  return state.frameScores
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case types.enterScore:
-      state.scores.push(action.payload)
       return {
         ...state,
-        scores: state.scores
+        currentRoll: state.currentRoll + 1,
+        scores: state.scores.concat([action.payload]),
+        frameScores: calculateFrameScore(state, action.payload),
       }
     case types.updateTotalScore:
       return {
