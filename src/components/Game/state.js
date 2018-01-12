@@ -36,7 +36,8 @@ const updateCurrentRoll = (rolls, lastScore) => {
 }
 
 const updateScores = (rolls, lastScore, scores) => {
-  if (isEven(rolls)) {
+  const penultimateRoll = 20
+  if (isEven(rolls) && rolls !== penultimateRoll) {
     return scores.concat([[lastScore]])
   } else {
     const newFrameScore = scores[getFrameIndex(scores)].concat([lastScore])
