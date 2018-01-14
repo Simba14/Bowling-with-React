@@ -8,14 +8,14 @@ export default class Game extends Component {
       game: {
         frameScores,
         totalScore,
-        scores,
+        frames,
       },
     } = this.props
-    console.log(scores)
+    // console.log(frames)
     return (
       <Scorecard
         frameScores={frameScores}
-        scores={scores}
+        frames={frames}
         totalScore={totalScore}
       />
     )

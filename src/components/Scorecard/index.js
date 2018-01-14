@@ -4,12 +4,13 @@ import './Scorecard.css'
 
 export default class Scorecard extends Component {
   renderScores = (frame, roll) => {
-    const {scores} = this.props
-    return scores[frame] ? scores[frame][roll] : ''
+    const {frames} = this.props
+    return frames[frame] ? frames[frame][roll] : ''
   }
 
   render () {
     const {frameScores, totalScore} = this.props
+    console.log(frameScores)
     return (
       <div className='Container'>
         <table id='table' className='Scorecard' cellPadding='1' cellSpacing='0'>
