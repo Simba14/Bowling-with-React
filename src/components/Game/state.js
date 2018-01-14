@@ -59,7 +59,6 @@ const updateFrames = (rolls, lastScore, frames) => {
 
 const calculateFrameScore = (state, lastScore) => {
   if ((!isEven(state.rolls) && !isStrike(lastScore) && !isSpare(state.pins.slice(-1)[0], lastScore)) || isBonusRoll(state.rolls)) {
-
     const frameScore = isBonusRoll(state.rolls) ?
       state.frames[getFrameIndex(state.frames)].slice(-1)[0] + state.frames[getFrameIndex(state.frames)].slice(-2)[0] + lastScore
       : state.frames[getFrameIndex(state.frames)].slice(-1)[0] + lastScore
@@ -69,8 +68,8 @@ const calculateFrameScore = (state, lastScore) => {
     }
     const updatedFrameScores = state.frameScores.concat(frameScore)
     return updatedFrameScores
-  // } else if (isStrike(lastScore) && state.rolls < 18) {
-  //   return state.frameScores
+  } else if (isStrike(state.pins.slice(-2)[0]) && state.rolls > 2) {
+      return state.frameScores.concat(strikeBonus(state.pins.slice(-1)[0], lastScore))
   } else if (isEven(state.rolls) && isSpare(state.pins.slice(-2)[0], state.pins.slice(-1)[0])) {
     const spareFrame = 10 + lastScore
     return state.frameScores.concat(spareFrame)
