@@ -14,6 +14,12 @@
   background-color: transparent;
 }
 
+.Restart:hover {
+  background-color: red;
+  color: white;
+  opacity: 0.9;
+}
+
 button {
   font-family: 'Bitter', cursive;
   width: 50px;
@@ -23,6 +29,10 @@ button {
   color: white;
   outline: none;
   font-size: 15px;
+}
+
+button:hover {
+  opacity: 0.7;
 }
 
 button:disabled,
