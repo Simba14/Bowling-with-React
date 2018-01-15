@@ -5,12 +5,12 @@ import {shallow} from 'enzyme'
 describe ('Scorecard', () => {
   it('should render table with 11 columns', () => {
     const frames = []
-    const frameScores = []
+    const cumulativeScores = []
     const totalScore = 0
     const wrapper = shallow(
       <Scorecard
         frames={frames}
-        frameScores={frameScores}
+        cumulativeScores={cumulativeScores}
         totalScore={totalScore}
       />
     )
@@ -19,12 +19,12 @@ describe ('Scorecard', () => {
 
   it('should render the correct column headings', () => {
     const frames = []
-    const frameScores = []
+    const cumulativeScores = []
     const totalScore = 0
     const wrapper = shallow(
       <Scorecard
         frames={frames}
-        frameScores={frameScores}
+        cumulativeScores={cumulativeScores}
         totalScore={totalScore}
       />
     )
@@ -43,12 +43,12 @@ describe ('Scorecard', () => {
 
   it('should render the correct scores', () => {
     const frames = [[0,0], [1,6], [7,3], [10], [4,5], [8,0]]
-    const frameScores = [0, 7, 20, 19, 8]
+    const cumulativeScores = [0, 7, 20, 19, 8]
     const totalScore = 8
     const wrapper = shallow(
       <Scorecard
         frames={frames}
-        frameScores={frameScores}
+        cumulativeScores={cumulativeScores}
         totalScore={totalScore}
       />
     )
@@ -70,12 +70,12 @@ describe ('Scorecard', () => {
 
   it('should render the correct total score', () => {
     const frames = [[0,0], [1,6], [7,3], [10], [4,5], [8,0]]
-    const frameScores = [0, 7, 20, 19, 8]
+    const cumulativeScores = [0, 7, 20, 19, 8]
     const totalScore = 8
     const wrapper = shallow(
       <Scorecard
         frames={frames}
-        frameScores={frameScores}
+        cumulativeScores={cumulativeScores}
         totalScore={totalScore}
       />
     )
@@ -85,12 +85,12 @@ describe ('Scorecard', () => {
 
   it('should render the correct cumulative frame scores', () => {
     const frames = [[0,0], [1,6], [7,3], [10], [4,5], [8,0]]
-    const frameScores = [0, 7, 20, 19, 8]
+    const cumulativeScores = [0, 7, 20, 19, 8]
     const totalScore = 8
     const wrapper = shallow(
       <Scorecard
         frames={frames}
-        frameScores={frameScores}
+        cumulativeScores={cumulativeScores}
         totalScore={totalScore}
       />
     )
@@ -108,12 +108,12 @@ describe ('Scorecard', () => {
 
   it('returns correct score', () => {
     const frames = [[0,0], [1,6], [7,3], [10], [4,5], [8,0]]
-    const frameScores = [0, 7, 20, 19, 8]
+    const cumulativeScores = [0, 7, 20, 19, 8]
     const totalScore = 8
     const wrapper = shallow(
       <Scorecard
         frames={frames}
-        frameScores={frameScores}
+        cumulativeScores={cumulativeScores}
         totalScore={totalScore}
       />
     )

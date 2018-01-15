@@ -6,7 +6,7 @@ Unit tests have been written using Jest and enzyme.
 
 Enter your bowling scores [here]()!
 
-![img](link)
+![Blundell's Bowling](https://i.imgur.com/yj6ESJK.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
@@ -22,7 +22,7 @@ Run Locally:
 
 To run tests, type in `yarn test`
 
-![img](link)
+![tests](https://i.imgur.com/0Xelgm8.gifv)
 
 Things To Improve On:
 -----
