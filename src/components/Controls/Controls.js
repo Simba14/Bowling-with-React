@@ -4,12 +4,12 @@ import './Controls.css'
 
 export default class Controls extends Component {
   handleClick = pins => {
-    this.props.updateTotalScore(pins)
     this.props.enterScore(pins)
   }
 
   disableButton = number => {
     console.log(this.props.rolls)
+    if (this.props.rolls > 21) return true
     if (this.props.rolls % 2 === 0) return false
     if (this.props.rolls === 19 && this.props.lastRoll === 10) return false
     return this.props.lastRoll + number > 10

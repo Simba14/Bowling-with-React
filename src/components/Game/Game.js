@@ -13,16 +13,16 @@ export default class Game extends Component {
         frameScores,
         pins,
         rolls,
-        totalScore,
       },
     } = this.props
-    // console.log(frames)
+    console.log(frameScores)
+
     return (
       <div className='Game'>
         <Scorecard
           frames={frames}
           frameScores={frameScores}
-          totalScore={totalScore}
+          totalScore={frameScores.slice(-1)[0]}
         />
         <Controls
           lastRoll={pins.slice(-1)[0]}

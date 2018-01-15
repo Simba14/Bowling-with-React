@@ -3,6 +3,7 @@ import mapValues from 'lodash.mapvalues'
 
 const types = {
   enterScore: 'Game/EnterScore',
+  restart: 'Game/Restart',
   updateTotalScore: 'Game/UpdateTotalScore',
 }
 
@@ -14,6 +15,7 @@ const initialState = {
   pins: [],
   frames: [],
   frameScores: [],
+  gameOver: false,
 }
 
 const isEven = number =>
@@ -57,24 +59,24 @@ const updateFrames = (rolls, lastScore, frames) => {
   }
 }
 
-const calculateFrameScore = (state, lastScore) => {
-  if ((!isEven(state.rolls) && !isStrike(lastScore) && !isSpare(state.pins.slice(-1)[0], lastScore)) || isBonusRoll(state.rolls)) {
-    const frameScore = isBonusRoll(state.rolls) ?
-      state.frames[getFrameIndex(state.frames)].slice(-1)[0] + state.frames[getFrameIndex(state.frames)].slice(-2)[0] + lastScore
-      : state.frames[getFrameIndex(state.frames)].slice(-1)[0] + lastScore
+const calculateFrameScore = (rolls, frames, frameScores, pins, lastScore) => {
+  if ((!isEven(rolls) && !isStrike(lastScore) && !isSpare(pins.slice(-1)[0], lastScore)) || isBonusRoll(rolls)) {
+    const frameScore = isBonusRoll(rolls) ?
+      frames[getFrameIndex(frames)].slice(-1)[0] + frames[getFrameIndex(frames)].slice(-2)[0] + lastScore
+      : frames[getFrameIndex(frames)].slice(-1)[0] + lastScore
 
-    if (isStrike(state.pins.slice(-2)[0]) && state.rolls > 2) {
-      return state.frameScores.concat(strikeBonus(state.pins.slice(-1)[0], lastScore), frameScore)
+    if (isStrike(pins.slice(-2)[0]) && rolls > 2) {
+      return frameScores.concat(strikeBonus(pins.slice(-1)[0], lastScore), frameScore)
     }
-    const updatedFrameScores = state.frameScores.concat(frameScore)
+    const updatedFrameScores = frameScores.concat(frameScore)
     return updatedFrameScores
-  } else if (isStrike(state.pins.slice(-2)[0]) && state.rolls > 2) {
-      return state.frameScores.concat(strikeBonus(state.pins.slice(-1)[0], lastScore))
-  } else if (isEven(state.rolls) && isSpare(state.pins.slice(-2)[0], state.pins.slice(-1)[0])) {
+  } else if (isStrike(pins.slice(-2)[0]) && rolls > 2) {
+      return frameScores.concat(strikeBonus(pins.slice(-1)[0], lastScore))
+  } else if (isEven(rolls) && isSpare(pins.slice(-2)[0], pins.slice(-1)[0])) {
     const spareFrame = 10 + lastScore
-    return state.frameScores.concat(spareFrame)
+    return frameScores.concat(spareFrame)
   }
-  return state.frameScores
+  return frameScores
 }
 
 export default (state = initialState, action) => {
@@ -85,13 +87,10 @@ export default (state = initialState, action) => {
         rolls: updateCurrentRoll(state.rolls, action.payload),
         pins: state.pins.concat(action.payload),
         frames: updateFrames(state.rolls, action.payload, state.frames),
-        frameScores: calculateFrameScore(state, action.payload),
+        frameScores: calculateFrameScore(state.rolls, state.frames, state.frameScores, state.pins, action.payload),
       }
-    case types.updateTotalScore:
-      return {
-        ...state,
-        totalScore: state.totalScore + action.payload
-      }
+    case types.restart:
+      return initialState
     default:
     return state
   }
