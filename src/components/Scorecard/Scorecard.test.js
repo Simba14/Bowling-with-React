@@ -80,7 +80,7 @@ describe ('Scorecard', () => {
       />
     )
 
-    expect(wrapper.find('#total-score').text()).toEqual('8')
+    expect(wrapper.find('.Total').text()).toEqual('8')
   })
 
   it('should render the correct cumulative frame scores', () => {

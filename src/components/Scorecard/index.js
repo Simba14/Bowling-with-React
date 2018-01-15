@@ -38,7 +38,7 @@ export default class Scorecard extends Component {
               <td id='r15' colSpan='3'>{this.renderScores(7,0)}</td><td id='r16' colSpan='3'>{this.renderScores(7,1)}</td>
               <td id='r17' colSpan='3'>{this.renderScores(8,0)}</td><td id='r18' colSpan='3'>{this.renderScores(8,1)}</td>
               <td id='r19' colSpan='2'>{this.renderScores(9,0)}</td><td id='r20' colSpan='2'>{this.renderScores(9,1)}</td><td id='r21' colSpan='2'>{this.renderScores(9,2)}</td>
-              <td id='total-score' colSpan='6'>{totalScore}</td>
+              <td id='total-score' className='Total' colSpan='6'>{totalScore}</td>
             </tr>
             <tr>
               <td id='cumulative-score-f1' colSpan='6'>{frameScores[0]}</td>
@@ -51,7 +51,7 @@ export default class Scorecard extends Component {
               <td id='cumulative-score-f8' colSpan='6'>{frameScores[7]}</td>
               <td id='cumulative-score-f9' colSpan='6'>{frameScores[8]}</td>
               <td id='cumulative-score-f10' colSpan='6'>{frameScores[9]}</td>
-              <td colSpan='6'></td>
+              <td id='total-score' colSpan='6'></td>
             </tr>
           </tbody>
         </table>
