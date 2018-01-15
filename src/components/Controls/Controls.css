@@ -8,14 +8,25 @@
   border-radius: 15px;
   height: 35px;
   margin-top: 40px;
-  margin-bottom: 40px;
-  background-color: #6fa2cc;
+  margin-bottom: 20px;
+  color: red;
+  border-color: red;
+  background-color: transparent;
 }
 
 button {
+  font-family: 'Bitter', cursive;
   width: 50px;
   height: 50px;
   margin: 10px;
-  background-color: #D3D3D3;
+  background-color: #27b09e;
+  color: white;
   outline: none;
+  font-size: 15px;
+}
+
+button:disabled,
+button[disabled]{
+  background-color: #27b09e82;
+  color: grey;
 }

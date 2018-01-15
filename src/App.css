@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Luckiest+Guy|Bitter');
+
 .App {
   display: flex;
+  font-family: 'Bitter', cursive;
   flex-direction: column;
   align-items: center;
+  margin-top: 40px;
 }
 
 .Title {
+  font-family: 'Luckiest Guy', cursive;
   text-align: center;
+  font-size: 60px;
+  color: red;
+  margin: 20px;
+  margin-bottom: 0px;
 }
 
 .Intro {
   text-align: center;
+  margin: 20px;
 }
