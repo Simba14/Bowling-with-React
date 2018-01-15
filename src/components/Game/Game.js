@@ -10,19 +10,19 @@ export default class Game extends Component {
     const {
       game: {
         frames,
-        frameScores,
+        cumulativeScores,
         gameOver,
         pins,
         rolls,
       },
     } = this.props
 
-    const totalScore = frameScores.slice(-1)[0]
+    const totalScore = cumulativeScores.slice(-1)[0]
     return (
       <div className='Game'>
         <Scorecard
           frames={frames}
-          frameScores={frameScores}
+          cumulativeScores={cumulativeScores}
           totalScore={totalScore}
         />
         <Controls

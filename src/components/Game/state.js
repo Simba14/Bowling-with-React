@@ -1,21 +1,20 @@
 import {createAction} from 'redux-actions'
 import mapValues from 'lodash.mapvalues'
 import updateFrames from '../../utilities/updateFrames'
-import calculateFrameScore from '../../utilities/calculateFrameScore'
+import updateCumulativeScore from '../../utilities/updateCumulativeScore'
 import isGameOver from '../../utilities/isGameOver'
 import updateCurrentRoll from '../../utilities/updateCurrentRoll'
 
 const types = {
   enterScore: 'Game/EnterScore',
   restart: 'Game/Restart',
-  updateTotalScore: 'Game/UpdateTotalScore',
 }
 
 export const actions = mapValues(types, type => createAction(type))
 
 const initialState = {
   frames: [],
-  frameScores: [],
+  cumulativeScores: [],
   gameOver: false,
   pins: [],
   rolls: 0,
@@ -26,7 +25,7 @@ export default (state = initialState, action) => {
     case types.enterScore:
       const {
         frames,
-        frameScores,
+        cumulativeScores,
         pins,
         rolls,
       } = state
@@ -34,7 +33,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         frames: updateFrames(rolls, action.payload, frames),
-        frameScores: calculateFrameScore(rolls, frames, frameScores, pins, action.payload),
+        cumulativeScores: updateCumulativeScore(rolls, frames, cumulativeScores, pins, action.payload),
         gameOver: isGameOver(rolls, action.payload, pins),
         pins: pins.concat(action.payload),
         rolls: updateCurrentRoll(rolls, action.payload),
