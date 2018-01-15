@@ -17,18 +17,25 @@ export default class Game extends Component {
       },
     } = this.props
 
+    const totalScore = frameScores.slice(-1)[0]
     return (
       <div className='Game'>
         <Scorecard
           frames={frames}
           frameScores={frameScores}
-          totalScore={frameScores.slice(-1)[0]}
+          totalScore={totalScore}
         />
         <Controls
           gameOver={gameOver}
           lastRoll={pins.slice(-1)[0]}
           rolls={rolls}
         />
+        {gameOver &&
+          <div className='Game-over-text'>
+            <h1>Game Over</h1>
+            <h2>You Scored: {totalScore}</h2>
+          </div>
+        }
       </div>
     )
   }
