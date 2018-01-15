@@ -1,6 +1,9 @@
 import {createAction} from 'redux-actions'
 import mapValues from 'lodash.mapvalues'
-import * as utilities from './utilities'
+import updateFrames from '../../utilities/updateFrames'
+import calculateFrameScore from '../../utilities/calculateFrameScore'
+import isGameOver from '../../utilities/isGameOver'
+import updateCurrentRoll from '../../utilities/updateCurrentRoll'
 
 const types = {
   enterScore: 'Game/EnterScore',
@@ -30,11 +33,11 @@ export default (state = initialState, action) => {
 
       return {
         ...state,
-        frames: utilities.updateFrames(rolls, action.payload, frames),
-        frameScores: utilities.calculateFrameScore(rolls, frames, frameScores, pins, action.payload),
-        gameOver: utilities.isGameOver(rolls, action.payload, pins),
+        frames: updateFrames(rolls, action.payload, frames),
+        frameScores: calculateFrameScore(rolls, frames, frameScores, pins, action.payload),
+        gameOver: isGameOver(rolls, action.payload, pins),
         pins: pins.concat(action.payload),
-        rolls: utilities.updateCurrentRoll(rolls, action.payload),
+        rolls: updateCurrentRoll(rolls, action.payload),
       }
     case types.restart:
       return initialState
