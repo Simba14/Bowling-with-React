@@ -11,11 +11,11 @@ export default class Game extends Component {
       game: {
         frames,
         frameScores,
+        gameOver,
         pins,
         rolls,
       },
     } = this.props
-    console.log(frameScores)
 
     return (
       <div className='Game'>
@@ -25,6 +25,7 @@ export default class Game extends Component {
           totalScore={frameScores.slice(-1)[0]}
         />
         <Controls
+          gameOver={gameOver}
           lastRoll={pins.slice(-1)[0]}
           rolls={rolls}
         />

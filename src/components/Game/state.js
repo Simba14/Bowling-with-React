@@ -41,6 +41,11 @@ const isBonusRoll = rolls => {
 const getFrameIndex = frames =>
   frames.length - 1
 
+const isGameOver = (rolls, lastScore, pins) => {
+  const GameNotOver =
+    rolls < 19 || (rolls === 19 && (isSpare(lastScore, pins.slice(-1)[0]) || isStrike(pins.slice(-1)[0])))
+  return !GameNotOver
+}
 
 const updateCurrentRoll = (rolls, lastScore) => {
   if (isStrike(lastScore) && isEven(rolls) && rolls < 18) {
@@ -88,6 +93,7 @@ export default (state = initialState, action) => {
         pins: state.pins.concat(action.payload),
         frames: updateFrames(state.rolls, action.payload, state.frames),
         frameScores: calculateFrameScore(state.rolls, state.frames, state.frameScores, state.pins, action.payload),
+        gameOver: isGameOver(state.rolls, action.payload, state.pins)
       }
     case types.restart:
       return initialState

@@ -8,18 +8,23 @@ export default class Controls extends Component {
   }
 
   disableButton = number => {
-    console.log(this.props.rolls)
-    if (this.props.rolls > 21) return true
-    if (this.props.rolls % 2 === 0) return false
-    if (this.props.rolls === 19 && this.props.lastRoll === 10) return false
-    return this.props.lastRoll + number > 10
+    const {
+      gameOver,
+      lastRoll,
+      rolls,
+    } = this.props
+
+    if (gameOver) return true
+    if (rolls % 2 === 0 || rolls === 0) return false
+    if (rolls === 19 && lastRoll === 10) return false
+    return lastRoll + number > 10
   }
 
   render () {
     return (
       <div className='Container'>
         <div>
-          <button id='pin0' onClick={() => this.handleClick(0)}>0</button>
+          <button id='pin0' disabled={this.disableButton(0)} onClick={() => this.handleClick(0)}>0</button>
           <button id='pin1' disabled={this.disableButton(1)} onClick={() => this.handleClick(1)}>1</button>
           <button id='pin2' disabled={this.disableButton(2)} onClick={() => this.handleClick(2)}>2</button>
           <button id='pin3' disabled={this.disableButton(3)} onClick={() => this.handleClick(3)}>3</button>
