@@ -18,7 +18,19 @@ Run Locally:
 3. Change into the directory: `cd Bowling-with-React`
 4. Run `yarn start`
 5. Open your browser and go to http://localhost:3000/
-6. Bowl Away
+6. Bowl Away!
+
+To run tests, type in `yarn test`
+
+![img](link)
+
+Things To Improve On:
+-----
+
+- Test Game component by mocking redux elements.
+- Refactor updateCumulativeScore function (as it's rather ugly!)
+- Render 'X' if strike and '/' if a spare is bowled.
+- Add a multiplayer mode.
 
 Bowling Rules:
 -----
