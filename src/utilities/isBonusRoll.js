@@ -1,4 +1,6 @@
-export default const isBonusRoll = rolls => {
+const isBonusRoll = rolls => {
   const bonusRoll = 20
   return rolls === bonusRoll
 }
+
+export default isBonusRoll

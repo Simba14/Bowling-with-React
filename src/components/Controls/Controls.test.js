@@ -3,7 +3,7 @@ import Controls from './Controls'
 import {shallow} from 'enzyme'
 
 describe ('Controls', () => {
-  it ('should render eleven pin buttons', () => {
+  it('should render eleven pin buttons', () => {
     const gameOver = false
     const lastRoll = 0
     const rolls = 0

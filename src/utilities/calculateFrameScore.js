@@ -5,7 +5,7 @@ import isSpare from './isSpare'
 import strikeBonus from './strikeBonus'
 import getFrameIndex from './getFrameIndex'
 
-export default const calculateFrameScore = (rolls, frames, frameScores, pins, lastScore) => {
+const calculateFrameScore = (rolls, frames, frameScores, pins, lastScore) => {
   if ((!isEven(rolls) && !isStrike(lastScore) && !isSpare(pins.slice(-1)[0], lastScore)) || isBonusRoll(rolls)) {
     const frameScore = isBonusRoll(rolls) ?
       frames[getFrameIndex(frames)].slice(-1)[0] + frames[getFrameIndex(frames)].slice(-2)[0] + lastScore
@@ -24,3 +24,5 @@ export default const calculateFrameScore = (rolls, frames, frameScores, pins, la
   }
   return frameScores
 }
+
+export default calculateFrameScore

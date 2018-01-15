@@ -10,23 +10,22 @@ export default class Scorecard extends Component {
 
   render () {
     const {frameScores, totalScore} = this.props
-    console.log(frameScores)
     return (
       <div className='Container'>
         <table id='table' className='Scorecard' cellPadding='1' cellSpacing='0'>
           <tbody>
             <tr>
-              <th colSpan='6'>Frame 1</th>
-              <th colSpan='6'>Frame 2</th>
-              <th colSpan='6'>Frame 3</th>
-              <th colSpan='6'>Frame 4</th>
-              <th colSpan='6'>Frame 5</th>
-              <th colSpan='6'>Frame 6</th>
-              <th colSpan='6'>Frame 7</th>
-              <th colSpan='6'>Frame 8</th>
-              <th colSpan='6'>Frame 9</th>
-              <th colSpan='6'>Frame 10</th>
-              <th colSpan='6'>Total Score</th>
+              <th id='c1' colSpan='6'>Frame 1</th>
+              <th id='c2' colSpan='6'>Frame 2</th>
+              <th id='c3' colSpan='6'>Frame 3</th>
+              <th id='c4' colSpan='6'>Frame 4</th>
+              <th id='c5' colSpan='6'>Frame 5</th>
+              <th id='c6' colSpan='6'>Frame 6</th>
+              <th id='c7' colSpan='6'>Frame 7</th>
+              <th id='c8' colSpan='6'>Frame 8</th>
+              <th id='c9' colSpan='6'>Frame 9</th>
+              <th id='c10' colSpan='6'>Frame 10</th>
+              <th id='c11' colSpan='6'>Total Score</th>
             </tr>
             <tr>
               <td id='r1' colSpan='3'>{this.renderScores(0,0)}</td><td id='r2' colSpan='3'>{this.renderScores(0,1)}</td>
@@ -52,7 +51,7 @@ export default class Scorecard extends Component {
               <td id='cumulative-score-f8' colSpan='6'>{frameScores[7]}</td>
               <td id='cumulative-score-f9' colSpan='6'>{frameScores[8]}</td>
               <td id='cumulative-score-f10' colSpan='6'>{frameScores[9]}</td>
-              <td id='total-score' colSpan='6'></td>
+              <td colSpan='6'></td>
             </tr>
           </tbody>
         </table>
