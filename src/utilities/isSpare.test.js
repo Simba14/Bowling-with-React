@@ -10,7 +10,7 @@ describe('isSpare function', () => {
   })
 
   it('should return false if not spare', () => {
-    for(var i = 0; i < 9; i=i+2) {
+    for(var i = 0; i < 9; i++) {
       expect(isSpare(i, 1)).toEqual(false)
     }
   })
