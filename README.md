@@ -1,10 +1,10 @@
-Bowling in React
+Bowling with React
 =================
 This is a bowling scorecard built using React.js and Redux.
 
 Unit tests have been written using Jest and enzyme.
 
-Enter your bowling scores [here]()!
+Enter your bowling scores [here](https://blundells-bowling.herokuapp.com/)!
 
 ![Blundell's Bowling](https://i.imgur.com/yj6ESJK.png)
 
