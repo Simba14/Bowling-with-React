@@ -22,7 +22,7 @@ Run Locally:
 
 To run tests, type in `yarn test`
 
-![tests](https://i.imgur.com/0Xelgm8.gifv)
+![tests](https://i.imgur.com/0Xelgm8.gif)
 
 Things To Improve On:
 -----
